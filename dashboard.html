@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NHS Mental Health Services Analytics Dashboard | Tola Adeniyi</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf9f7;--bg2:#f3f1ec;--bg3:#ece9e2;
+  --ink:#1a1612;--ink2:#3a3530;--ink3:#6a6158;
+  --amber:#c47a0a;--amber2:#e09520;--amber3:#f5b840;
+  --rule:#d8d2c8;--green:#16a34a;--red:#dc2626;--blue:#1d4ed8;--teal:#0f766e;
+  --f1:'Lora',serif;--f2:'DM Sans',sans-serif;--f3:'DM Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f2);line-height:1.6}
+
+/* HEADER */
+header{background:var(--ink);color:#fff;padding:2rem 2.5rem 1.75rem}
+.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1rem}
+.hdr-title{font-family:var(--f1);font-size:1.7rem;font-weight:700;line-height:1.15;margin-bottom:.35rem}
+.hdr-title span{color:var(--amber3);font-style:italic}
+.hdr-sub{font-size:.85rem;color:rgba(255,255,255,.65);font-family:var(--f3);letter-spacing:.04em}
+.hdr-meta{text-align:right}
+.hdr-author{font-size:.8rem;color:rgba(255,255,255,.5);font-family:var(--f3);margin-bottom:.25rem}
+.hdr-author strong{color:var(--amber3)}
+.hdr-badge{display:inline-block;background:rgba(196,122,10,.2);border:1px solid rgba(196,122,10,.35);color:var(--amber3);font-family:var(--f3);font-size:.65rem;padding:.18rem .55rem;border-radius:2px;text-transform:uppercase;letter-spacing:.1em}
+
+/* KPI STRIP */
+.kpi-strip{background:var(--bg2);border-bottom:1px solid var(--rule);padding:1.25rem 2.5rem;
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+.kpi{text-align:center;padding:.5rem 0;border-right:1px solid var(--rule)}
+.kpi:last-child{border-right:none}
+.kpi-val{font-family:var(--f1);font-size:1.65rem;font-weight:700;color:var(--amber);
+  display:block;line-height:1}
+.kpi-val.red{color:var(--red)}.kpi-val.green{color:var(--green)}.kpi-val.blue{color:var(--blue)}
+.kpi-lbl{font-family:var(--f3);font-size:.6rem;color:var(--ink3);text-transform:uppercase;
+  letter-spacing:.08em;margin-top:.3rem;display:block}
+.kpi-change{font-family:var(--f3);font-size:.65rem;margin-top:.2rem;display:block}
+.kpi-change.up{color:var(--red)}.kpi-change.down{color:var(--green)}.kpi-change.neutral{color:var(--ink3)}
+
+/* MAIN LAYOUT */
+.main{padding:1.75rem 2.5rem;display:flex;flex-direction:column;gap:1.5rem}
+
+/* SECTION HEADERS */
+.sec-head{display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;
+  border-bottom:1px solid var(--rule);padding-bottom:.6rem}
+.sec-num{font-family:var(--f3);font-size:.62rem;color:var(--amber);letter-spacing:.1em}
+.sec-title{font-family:var(--f1);font-size:1.15rem;font-weight:700;color:var(--ink)}
+.sec-title em{color:var(--amber);font-style:italic}
+.sec-note{font-size:.78rem;color:var(--ink3);margin-left:auto;font-style:italic}
+
+/* CHART CARDS */
+.chart-row{display:grid;gap:1.25rem}
+.chart-row.cols-2{grid-template-columns:1fr 1fr}
+.chart-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+.chart-row.cols-1-2{grid-template-columns:1fr 2fr}
+.chart-card{background:#fff;border:1px solid var(--rule);border-radius:6px;
+  padding:1.35rem;position:relative;overflow:hidden}
+.chart-card::before{content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;background:var(--amber)}
+.chart-card.teal::before{background:var(--teal)}
+.chart-card.green::before{background:var(--green)}
+.chart-card.red::before{background:var(--red)}
+.chart-card.blue::before{background:var(--blue)}
+.card-title{font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:.3rem}
+.card-sub{font-size:.74rem;color:var(--ink3);margin-bottom:.9rem;font-style:italic}
+.chart-img{width:100%;height:auto;border-radius:3px;display:block}
+
+/* INSIGHT BOXES */
+.insight-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.insight{background:var(--bg2);border:1px solid var(--rule);border-left:3px solid var(--amber);
+  border-radius:0 5px 5px 0;padding:1rem 1.15rem}
+.insight.red{border-left-color:var(--red)}
+.insight.green{border-left-color:var(--green)}
+.insight.blue{border-left-color:var(--blue)}
+.insight-title{font-weight:700;font-size:.84rem;color:var(--ink);margin-bottom:.35rem}
+.insight-body{font-size:.79rem;color:var(--ink2);line-height:1.65}
+.insight-body strong{color:var(--ink);font-weight:600}
+
+/* FINDINGS */
+.findings{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:1.5rem;
+  border-top:3px solid var(--amber)}
+.findings h3{font-family:var(--f1);font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:1rem}
+.finding-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.finding-list li{display:flex;gap:.75rem;font-size:.84rem;color:var(--ink2);line-height:1.6;
+  padding:.5rem 0;border-bottom:1px solid var(--bg3)}
+.finding-list li:last-child{border-bottom:none}
+.finding-list li::before{content:'→';color:var(--amber);font-family:var(--f3);
+  font-size:.75rem;flex-shrink:0;margin-top:.18rem}
+.finding-list li strong{color:var(--ink);font-weight:600}
+
+/* FOOTER */
+footer{background:var(--bg3);border-top:1px solid var(--rule);padding:1rem 2.5rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;
+  font-family:var(--f3);font-size:.65rem;color:var(--ink3)}
+footer a{color:var(--amber);text-decoration:none}
+
+@media(max-width:900px){
+  .kpi-strip{grid-template-columns:repeat(3,1fr)}
+  .chart-row.cols-2,.chart-row.cols-1-2{grid-template-columns:1fr}
+  .insight-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-top">
+    <div>
+      <div class="hdr-title">NHS Mental Health Services<br><span>Analytics Dashboard</span></div>
+      <div class="hdr-sub">England · 2019–2024 · All Regions & Conditions · 789,543 Referrals Analysed</div>
+    </div>
+    <div class="hdr-meta">
+      <div class="hdr-author">Analysis by <strong>Tola Adeniyi</strong></div>
+      <div class="hdr-author" style="margin-bottom:.4rem">Data Analyst · BI Developer · adetoladeniyi.com</div>
+      <span class="hdr-badge">Project 1 of 3 · Portfolio</span>
+    </div>
+  </div>
+</header>
+
+<!-- KPI STRIP -->
+<div class="kpi-strip">
+  <div class="kpi">
+    <span class="kpi-val">789k</span>
+    <span class="kpi-lbl">Total Referrals</span>
+    <span class="kpi-change neutral">2019–2024</span>
+  </div>
+  <div class="kpi">
+    <span class="kpi-val up red">+25.8%</span>
+    <span class="kpi-lbl">Referral Growth</span>
+    <span class="kpi-change up">2019 vs 2024</span>
+  </div>
+  <div class="kpi">
+    <span class="kpi-val red">13.3w</span>
+    <span class="kpi-lbl">Avg Wait 2024</span>
+    <span class="kpi-change up">Up from 6.1w in 2019</span>
+  </div>
+  <div class="kpi">
+    <span class="kpi-val red">62.8%</span>
+    <span class="kpi-lbl">Completion Rate 2024</span>
+    <span class="kpi-change up">Down from 71.8% in 2019</span>
+  </div>
+  <div class="kpi">
+    <span class="kpi-val red">16.9%</span>
+    <span class="kpi-lbl">Staff Vacancy 2024</span>
+    <span class="kpi-change up">Up from 8.0% in 2019</span>
+  </div>
+  <div class="kpi">
+    <span class="kpi-val green">38.3%</span>
+    <span class="kpi-lbl">Patients Improved</span>
+    <span class="kpi-change neutral">Of completed treatments</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- SECTION 1: TRENDS -->
+  <div>
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <div class="sec-title">Referral Trends — <em>Volume & Growth</em></div>
+      <span class="sec-note">Referrals fell sharply in 2020 (COVID-19) before surging post-pandemic</span>
+    </div>
+    <div class="chart-row cols-1-2">
+      <div>
+        <div class="insight-row" style="grid-template-columns:1fr;gap:.85rem;margin-bottom:0">
+          <div class="insight red">
+            <div class="insight-title">↑ 118% increase in wait times</div>
+            <div class="insight-body">Average wait time grew from <strong>6.1 weeks in 2019 to 13.3 weeks in 2024</strong> — more than double. All regions exceeded the NHS 18-week target for specific pathways by 2023.</div>
+          </div>
+          <div class="insight">
+            <div class="insight-title">COVID dip then sustained surge</div>
+            <div class="insight-body">Referrals dropped <strong>21% in 2020</strong> as services restricted access. The 2021–2024 period shows consistently higher demand than pre-pandemic, suggesting permanently elevated need.</div>
+          </div>
+          <div class="insight green">
+            <div class="insight-title">Depression & Anxiety dominate</div>
+            <div class="insight-body"><strong>52% of all referrals</strong> are for Depression (28%) and Anxiety Disorders (24%) — consistent across all regions and years, suggesting these should be primary commissioning priorities.</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="card-title">Annual Referral Volume 2019–2024</div>
+        <div class="card-sub">All NHS regions and mental health conditions combined</div>
+        <img src="charts/01_referral_trends.png" class="chart-img" alt="Referral trends chart">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: CONDITIONS & REGIONS -->
+  <div>
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <div class="sec-title">Conditions & Regional Distribution</div>
+    </div>
+    <div class="chart-row cols-2">
+      <div class="chart-card">
+        <div class="card-title">Referrals by Mental Health Condition</div>
+        <div class="card-sub">Cumulative 2019–2024, all regions</div>
+        <img src="charts/02_by_condition.png" class="chart-img" alt="Conditions chart">
+      </div>
+      <div class="chart-card teal">
+        <div class="card-title">Regional & Condition Distribution Heatmap</div>
+        <div class="card-sub">% of each region's referrals by condition</div>
+        <img src="charts/07_heatmap.png" class="chart-img" alt="Heatmap">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: WAIT TIMES & PERFORMANCE -->
+  <div>
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <div class="sec-title">Service Performance — <em>Wait Times & Completion</em></div>
+    </div>
+    <div class="chart-row cols-2">
+      <div class="chart-card red">
+        <div class="card-title">Average Wait Times by Region: 2019 vs 2024</div>
+        <div class="card-sub">Wait times more than doubled across all regions in 5 years</div>
+        <img src="charts/03_wait_times.png" class="chart-img" alt="Wait times chart">
+      </div>
+      <div class="chart-card teal">
+        <div class="card-title">Treatment Completion Rate 2019–2024</div>
+        <div class="card-sub">Declining trend — from 71.8% to 62.8%</div>
+        <img src="charts/04_completion_rate.png" class="chart-img" alt="Completion rate chart">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: WORKFORCE -->
+  <div>
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <div class="sec-title">Workforce Pressure — <em>Vacancies & Impact</em></div>
+    </div>
+    <div class="chart-row cols-1-2">
+      <div class="chart-card blue">
+        <div class="card-title">Staff Vacancies vs Wait Times</div>
+        <div class="card-sub">Strong correlation: as vacancies rise, wait times increase</div>
+        <img src="charts/06_vacancies_wait.png" class="chart-img" alt="Vacancies chart">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="insight blue">
+          <div class="insight-title">Strong vacancy–wait correlation</div>
+          <div class="insight-body">Staff vacancy rates rose from <strong>8.0% to 16.9%</strong> between 2019 and 2024 — a 111% increase — closely tracking the doubling of average wait times. This relationship suggests that workforce investment would directly reduce patient waits.</div>
+        </div>
+        <div class="insight red">
+          <div class="insight-title">Completion rates declining under pressure</div>
+          <div class="insight-body">Treatment completion fell from <strong>71.8% to 62.8%</strong> over 5 years. With increasing caseloads and fewer staff, patients are more likely to be discharged before completing treatment — representing a significant quality of care concern.</div>
+        </div>
+        <div class="insight green">
+          <div class="insight-title">Analytical recommendation</div>
+          <div class="insight-body">A <strong>10% increase in mental health workforce</strong> — particularly in community settings — could reduce average wait times by an estimated 2–3 weeks based on observed vacancy/wait correlations in this dataset.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: DEMOGRAPHICS -->
+  <div>
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <div class="sec-title">Patient Demographics & Outcomes</div>
+    </div>
+    <div class="chart-row cols-2">
+      <div class="chart-card">
+        <div class="card-title">Age Groups & Referral Sources</div>
+        <div class="card-sub">Working-age adults (26–50) account for 48% of all referrals</div>
+        <img src="charts/05_demographics.png" class="chart-img" alt="Demographics chart">
+      </div>
+      <div class="chart-card green">
+        <div class="card-title">Treatment Outcomes Distribution</div>
+        <div class="card-sub">38.3% of patients show measurable improvement</div>
+        <img src="charts/08_outcomes.png" class="chart-img" alt="Outcomes chart">
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY FINDINGS -->
+  <div class="findings">
+    <h3>Key Findings & Analytical Conclusions</h3>
+    <ul class="finding-list">
+      <li><strong>Referral demand has grown 25.8% since 2019</strong> and shows no sign of returning to pre-pandemic levels. Mental health services are under structurally higher demand than pre-2020 planning assumptions anticipated.</li>
+      <li><strong>Wait times more than doubled</strong> from 6.1 weeks in 2019 to 13.3 weeks in 2024 — with all regions showing deterioration. North East and Yorkshire showed the steepest increase at 124%.</li>
+      <li><strong>Depression and Anxiety account for 52% of all referrals</strong> consistently across regions and years. Commissioning models that prioritise talking therapies and IAPT pathways for these conditions could absorb significant demand.</li>
+      <li><strong>Staff vacancies and wait times are strongly correlated (r ≈ 0.91)</strong>. The data supports the case that workforce investment is the single most impactful lever available to commissioners seeking to reduce patient waiting times.</li>
+      <li><strong>Treatment completion rates declined 9 percentage points</strong> over 5 years — from 71.8% to 62.8%. This likely reflects clinicians discharging patients earlier due to caseload pressure rather than clinical completion.</li>
+      <li><strong>38.3% of patients showed measurable improvement</strong> from treatment. With 7.1% lost to follow-up or DNA, improving engagement and reducing drop-out could meaningfully increase overall improvement rates.</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <span>NHS Mental Health Services Analytics · Tola Adeniyi · adetoladeniyi.com · detola.adeniyi@gmail.com</span>
+  <span>Data: Modelled from published NHS MHSDS statistics · For portfolio demonstration purposes</span>
+  <span><a href="https://github.com/[yourhandle]/nhs-mental-health-analytics">GitHub Repository →</a></span>
+</footer>
+
+</body>
+</html>
