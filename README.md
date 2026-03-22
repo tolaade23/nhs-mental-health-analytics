@@ -102,7 +102,7 @@ I built this project as part of a portfolio demonstrating data analytics, BI, an
 
 **Background:** 13 years of operational data analytics at Ericsson and Huawei. MSc Applied Artificial Intelligence (Aston University, 2023). Google PM Certified. Microsoft Azure Data Scientist Associate. Neo4j Certified Professional.
 
-**Clinical context:** I currently work within NHS-referred inpatient mental health services at Priory Hospital — which gave me direct insight into how this data is generated at the point of care and what the quality gaps in real EHR data look like.
+**Clinical context:** I currently work within NHS-referred inpatient mental health services at Priory Hospital, which gave me direct insight into how this data is used and generated at point of care and what the quality gaps in real EHR data look like.
 
 📧 detola.adeniyi@gmail.com | 🌐 adetoladeniyi.com | 💼 [LinkedIn](https://linkedin.com/in/adetolaadeniyi)
 
