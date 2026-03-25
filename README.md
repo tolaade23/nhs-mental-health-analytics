@@ -1,6 +1,7 @@
 # NHS Mental Health Services Analytics 2019–2024
 
-**Data Analyst:** Tola Adeniyi | [adetoladeniyi.com](https://adetoladeniyi.com) | [LinkedIn](https://linkedin.com/in/adetolaadeniyi) | [Dashboard](https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html)
+[Dashboard](https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html)
+**Data Analyst:** Tola Adeniyi | [adetoladeniyi.com](https://adetoladeniyi.com) | [LinkedIn](https://linkedin.com/in/adetolaadeniyi) | 
 
 ---
 
@@ -94,7 +95,6 @@ The project includes 8 charts covering:
 4. **Workforce is the primary lever** — strong vacancy/wait correlation supports the investment case
 5. **Completion rates declining** — caseload pressure is driving early discharge, not clinical completion
 
-Dashboard - https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html
 ---
 
 ## About the Analyst
@@ -105,7 +105,7 @@ I built this project as part of a portfolio demonstrating data analytics, BI, an
 
 **Clinical context:** I currently work within NHS-referred inpatient mental health services at Priory Hospital, which gave me direct insight into how this data is used and generated at point of care and what the quality gaps in real EHR data look like.
 
-📧 detola.adeniyi@gmail.com | 🌐 adetoladeniyi.com | 💼 [LinkedIn](https://linkedin.com/in/adetolaadeniyi) | [Dashboard](https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html)
+📧 detola.adeniyi@gmail.com | 🌐 [adetoladeniyi.com](https://adetoladeniyi.com) | 💼 [LinkedIn](https://linkedin.com/in/adetolaadeniyi) | [Dashboard](https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html)
 
 ---
 
