@@ -47,7 +47,7 @@ nhs-mental-health-analytics/
 │   ├── 07_heatmap.png
 │   └── 08_outcomes.png
 │
-├── dashboard.html (https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html) # Interactive HTML dashboard
+├── dashboard.html  # Interactive HTML dashboard
 ├── NHS_Mental_Health_Analytics_Report.pdf # Full analytical report (6 pages)
 └── README.md
 ```
@@ -105,7 +105,7 @@ I built this project as part of a portfolio demonstrating data analytics, BI, an
 
 **Clinical context:** I currently work within NHS-referred inpatient mental health services at Priory Hospital, which gave me direct insight into how this data is used and generated at point of care and what the quality gaps in real EHR data look like.
 
-📧 detola.adeniyi@gmail.com | 🌐 adetoladeniyi.com | 💼 [LinkedIn](https://linkedin.com/in/adetolaadeniyi)
+📧 detola.adeniyi@gmail.com | 🌐 adetoladeniyi.com | 💼 [LinkedIn](https://linkedin.com/in/adetolaadeniyi) | [Dashboard](https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html)
 
 ---
 
