@@ -1,6 +1,6 @@
 # NHS Mental Health Services Analytics 2019–2024
 
-**Data Analyst:** Tola Adeniyi | [adetoladeniyi.com](https://adetoladeniyi.com) | [LinkedIn](https://linkedin.com/in/adetolaadeniyi)
+**Data Analyst:** Tola Adeniyi | [adetoladeniyi.com](https://adetoladeniyi.com) | [LinkedIn](https://linkedin.com/in/adetolaadeniyi) | [Dashboard](https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html)
 
 ---
 
