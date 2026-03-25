@@ -47,7 +47,7 @@ nhs-mental-health-analytics/
 │   ├── 07_heatmap.png
 │   └── 08_outcomes.png
 │
-├── dashboard.html (https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html)                      # Interactive HTML dashboard
+├── dashboard.html (https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html) # Interactive HTML dashboard
 ├── NHS_Mental_Health_Analytics_Report.pdf # Full analytical report (6 pages)
 └── README.md
 ```
@@ -94,6 +94,7 @@ The project includes 8 charts covering:
 4. **Workforce is the primary lever** — strong vacancy/wait correlation supports the investment case
 5. **Completion rates declining** — caseload pressure is driving early discharge, not clinical completion
 
+Dashboard - https://tolaade23.github.io/nhs-mental-health-analytics/dashboard.html
 ---
 
 ## About the Analyst
