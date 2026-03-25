@@ -8,7 +8,7 @@
 
 A comprehensive analytical study of NHS mental health service delivery across England from 2019 to 2024, covering **789,543 referrals** across seven regions and eight mental health conditions.
 
-This project was built as part of my data analytics portfolio. It draws on my direct experience working within NHS-referred mental health inpatient services at Priory Hospital — giving me practical insight into how health data is generated, where quality gaps arise, and what the numbers mean in a clinical context.
+This project was built as part of my data analytics portfolio. It draws on my direct experience working within NHS-referred mental health inpatient services at Priory Hospital, which gives me practical insight into how health data is generated, where quality gaps arise, and what the numbers mean in a clinical context.
 
 ---
 
